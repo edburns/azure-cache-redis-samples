@@ -30,8 +30,7 @@ public class App
   }
   
   public static void main( String[] args ) {
-    App app = new App();
-    app.redisson();
+    new App().redisson();
     System.exit(0);
   }
 }
