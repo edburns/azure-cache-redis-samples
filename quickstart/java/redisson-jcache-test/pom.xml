@@ -8,26 +8,20 @@
   <artifactId>redisson-jcache-test</artifactId>
   <version>1.0</version>
 
-  <name>redistest</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>${project.artifactId}</name>
+  <description>
+    REDISCACHEHOSTNAME=HOSTNAME.redis.cache.windows.net REDISCACHEKEY="KEY" mvn clean install exec:java -D exec.mainClass=example.demo.App
+  </description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <singleServerConfig.password>${env.REDISCACHEKEY}</singleServerConfig.password>
     <singleServerConfig.address>rediss://${env.REDISCACHEHOSTNAME}:6380</singleServerConfig.address>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>3.2.0</version>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
     <dependency>
       <groupId>org.redisson</groupId>
       <artifactId>redisson</artifactId>
