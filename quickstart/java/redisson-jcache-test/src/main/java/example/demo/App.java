@@ -13,17 +13,17 @@ public class App
 {
 
   public void redisson() {
-    MutableConfiguration<String, String> config = new MutableConfiguration<>();
-
+    var now = LocalTime.now();
     var manager = Caching.getCachingProvider().getCacheManager();
-    Cache<String, String> cache = manager.createCache("namedCache", config);
-
-    var t = LocalTime.now();
-
-    var now = "" + System.currentTimeMillis();
-
-    cache.put("now", now);
-    System.out.println("now: " + System.currentTimeMillis() + " then: " + cache.get("now"));
+    Cache<String, LocalTime> cache =
+      manager.createCache("namedCache", new MutableConfiguration()
+                          .setStoreByValue(true)
+                          .setTypes(String.class, LocalTime.class));
+    
+    cache.put("then", now);
+    System.out.println("That was then: " + cache.get("then") +
+                       ", this is now: " + LocalTime.now() + ".");
+    cache.close();
     return;
   }
   
