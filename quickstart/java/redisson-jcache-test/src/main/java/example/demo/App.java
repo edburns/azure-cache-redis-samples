@@ -3,14 +3,26 @@ package example.demo;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisShardInfo;
 
+import javax.cache.*;
+import javax.cache.configuration.*;
+
 /**
  * Redis test
  *
  */
 public class App 
 {
+
+  public void redisson() {
+    MutableConfiguration<String, String> config = new MutableConfiguration<>();
+    
+    CacheManager manager = Caching.getCachingProvider().getCacheManager();
+    Cache<String, String> cache = manager.createCache("namedCache", config);    
+  }
+  
     public static void main( String[] args )
     {
+      new App().redisson();
 
         boolean useSsl = true;
         String cacheHostname = System.getenv("REDISCACHEHOSTNAME");

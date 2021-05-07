@@ -1,4 +1,4 @@
-clusterServerConfig:
+clusterServersConfig:
   password: ${clusterServerConfig.password}
   nodeAddresses:
   - ${clusterServerConfig.nodeAddresses}
